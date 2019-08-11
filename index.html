@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-us">
+​
+<head>
+  <meta charset="UTF-8">
+  <title>Psychic Game</title>
+
+</head>
+​
+<body>
+​
+  <div>
+    <p id="directions-text">Guess what number I'm thinking of!</p>
+    <p id="wins-text"></p>
+    <p id="losses-text"></p>
+    <p id="userchoice-text"></p>
+    <p id="guessesleft-text"></p>
+  </div>
+​
+  <script type="text/javascript">
+  
+    let computerChoices =["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+    let wins = 0;
+    let losses = 0;
+    let guessesleft = 9;
+    let userGuess = ""
+    let computerGuess = ""
+    
+   
+    let userChoiceText = document.getElementById("userchoice-text");
+    let guessesleftText = document.getElementById("guessesleft-text");
+    let winsText = document.getElementById("wins-text");
+    let lossesText = document.getElementById("losses-text");
+   
+  
+   
+    document.onkeyup = function(event) {
+    
+      let userGuess = event.key;
+            console.log(userGuess) 
+            
+            // tried to put this in an if statement for guessesleft = 9, so it would only reset on win or loss, but that didn't work...
+     let computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        
+          
+     
+      
+     if(userGuess === computerGuess){
+         wins++
+         guessesleft=9
+         
+        
+     }
+        else(
+            guessesleft--
+        
+        )
+    if(guessesleft === 0){
+        losses++
+        guessesleft=9
+        
+    }
+
+        
+        userChoiceText.textContent = "You chose: " + userGuess;
+        guessesleftText.textContent = "Guesses Remaining: " + guessesleft;
+        winsText.textContent = "wins: " + wins;
+        lossesText.textContent = "losses: " + losses;
+    }
+    //tried to use <script type="text/javascript" href=\psychic-game\assets\javascript\game.js"> to link to js file
+  </script>
+​
+</body>
+​
+</html>
